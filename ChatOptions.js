@@ -248,7 +248,9 @@ if(wgCanonicalSpecialPageName == 'Chat') {
       for (var m in chatOptions.modules) {
         if ( chatOptions.modules.hasOwnProperty( m ) ) {
           var module = chatOptions.modules[m];
-          $(module.element).attr("checked",true);  // check the box to indicate to the user that it is loaded
+          if (module.enabled) {
+            $(module.element).attr("checked",true);  // check the box to indicate to the user that it is loaded
+          }
         }
       }
       
