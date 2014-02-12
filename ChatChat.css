@@ -1,0 +1,12 @@
+/* Options */
+.sprite { background-color: transparent; background-image: url(http://slot1.images.wikia.nocookie.net/__cb62186/common/skins/oasis/images/sprite.png); background-repeat: no-repeat; }
+.sprite.gear { background-position: -1192px -80px; height: 16px; width: 16px; }
+#chat-options-button { position: absolute; dispay: inline-block; bottom: 0px; right: 0px; font-size: 100%; padding-right: 15px; cursor: pointer; }
+#chat-options-button .chat-options { position: relative; bottom: 3px; padding-left: 5px; display: inline; }
+.chat_look { line-height: 36px; position: relative; }
+.chat_look a { cursor: pointer; font-size: 75%; padding-left: 5px; }
+.colorpicker { z-index: 2000000003; }
+.color_selector { cursor: pointer; position: relative; width: 36px; height: 36px; background: url(http://images.wikia.com/dragonage/images/e/e8/Select.png); float: left; }
+.color_selector div { position: absolute; top: 4px; left: 4px; width: 28px; height: 28px; background: url(http://images.wikia.com/dragonage/images/e/e8/Select.png) center; }
+#chat_look_fontface { margin-left: 4px; margin-right: 10px; height: 18px; font-size: 90%; background-color: rgb(24,24,24); color: rgb(212,212,212); }
+.chat_color_reset { width: 8px; height: 8px; position: absolute; margin-top: 7px; }
