@@ -15,7 +15,7 @@ if(wgCanonicalSpecialPageName == 'Chat') {
     // create the style tag with the css hiding the blocked user's chat
     $.getJSON('/index.php?action=ajax&rs=ChatAjax&method=getListOfBlockedPrivate', function(response) {
       $('head').append('<style type="text/css" id="chat_ignored_list">li[data-user="'+response.blockedChatUsers.join('"], li[data-user="')+'"] {display:none;} #Rail li[data-user] {display:list-item !important;}</style>');
-    })
+    });
 
 
 
@@ -32,25 +32,17 @@ if(wgCanonicalSpecialPageName == 'Chat') {
     /**
      * Displays the options window
      */
-    function openOptions() {
-      $.showCustomModal( "Options", '<form class="WikiaForm"><fieldset><div class="input-group"><label>Ignored users</label><ul id="blocked_user_list"><li><input type="text" value=""><span class="icon add">&nbsp;</span></li></ul></div></fieldset></form>',
+    function openIgnoreList() {
+      $.showCustomModal( "Ignore Users", '<form class="WikiaForm"><fieldset><div class="input-group"><label>Block list</label><ul id="ignored_user_list"><li><input type="text" value=""><span class="icon add">&nbsp;</span></li></ul></div></fieldset></form>',
       {
-        id: "chat_block_list_dialog",
+        id: "chat_ignore_list_dialog",
         width: 450,
         buttons: [
           {
-            id: "chat_block_list_dialog_cancel",
-            message: "Cancel",
+            id: "chat_ignore_list_dialog_cancel",
+            message: "Close",
             handler: function () {
-              //closeOptions();
-            }
-          },
-          {
-            id: "chat_block_list_dialog_update",
-            defaultButton: true,
-            message: "Update",
-            handler: function () {
-              //updateCookie();
+              closeIgnoreList();
             }
           }
         ]
@@ -58,6 +50,13 @@ if(wgCanonicalSpecialPageName == 'Chat') {
       // enum through the available window fonts
     }
     
+    /**
+     * Close the options window without saving any changes
+     */
+    function closeIgnoreList() {
+      $('#chat_ignore_list_dialog').remove();
+      $('.blackout').remove();
+    } // end closeOptions()
     
     
     
@@ -89,5 +88,13 @@ if(wgCanonicalSpecialPageName == 'Chat') {
       });
     }
     
-  })(); // execute the anonymous function for scopin
+    
+    // add a block list icon
+    if (!$('.Rail #chat-ignore-list-button').length) {
+      $('.Rail').append('<div id="chat-ignore-list-button"><img height="16" width="16" class="sprite gear" src="data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D" /></div>');
+      $('.Rail #chat-ignore-button').click(openIgnoreList);
+    }
+    
+    console.log("LOG: Chat/IgnoreUsers.js loaded");
+  })(); // execute the anonymous function for scoping
 }

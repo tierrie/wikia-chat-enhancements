@@ -12,8 +12,9 @@
 .chat_color_reset { width: 8px; height: 8px; position: absolute; margin-top: 7px; }
 
 
+#chat-ignore-list-button { position: absolute; dispay: inline-block; bottom: 0px; right: 0px; font-size: 100%; padding-right: 15px; cursor: pointer; }
 
-.icon {
+#blocked_user_list .icon {
     background-color: transparent;
     background-image: url(http://slot1.images.wikia.nocookie.net/__cb62523/common/skins/oasis/images/sprite.png);
     background-repeat: no-repeat;
@@ -25,20 +26,20 @@
     
     cursor: pointer;
 }
-.icon.remove {
+#blocked_user_list .icon.remove {
     background-position: -1177px -81px;
 }
-.icon.add {
+#blocked_user_list .icon.add {
     background-position: -1097px -81px;
 }
-ul {
+#blocked_user_list ul {
     list-style-type: none;
     width: 150px;
     font-family: arial; 
     font-size: 12pt;
 }
 
-li {
+#blocked_user_list li {
     border: 1px solid black;
     line-height: 24px;
 }
