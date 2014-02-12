@@ -178,6 +178,15 @@ if(wgCanonicalSpecialPageName == 'Chat') {
             $('head').append('<style type="text/css">#WikiaPage .Chat .message { word-wrap: break-word; }</style>');
             this.loaded = true;
           }
+        },
+        IgnoreUser: {
+          element: "#IgnoreUser",
+          enabled: isEnabled("IgnoreUser"),
+          loaded: false,
+          load: function () {
+            importScriptPage("Chat/IgnoreUser.js","script");
+            this.loaded = true;
+          }
         }
       }
     }
@@ -202,7 +211,8 @@ if(wgCanonicalSpecialPageName == 'Chat') {
         if ( chatOptions.modules.hasOwnProperty( m ) ) {
           var module = chatOptions.modules[m];
           if (typeof module.enabled === 'boolean' && module.enabled && !module.loaded) {
-            module.load();
+            module.load();  // load the modules
+            $(module.element).attr("checked",true);  // check the box to indicate to the user that it is loaded
           }
         }
       }
@@ -234,23 +244,6 @@ if(wgCanonicalSpecialPageName == 'Chat') {
           }
         ]
       });
-      
-      // check if various modules have been enabled by the user, and check their boxes if so
-      if (chatOptions.modules.ChatHacks.enabled)
-        $("#ChatHacks").attr("checked",true);
-      if (chatOptions.modules.MultiPM.enabled)
-        $("#MultiPM").attr("checked",true);
-      if (chatOptions.modules.TabComplete.enabled)
-        $("#TabComplete").attr("checked",true);
-      if (chatOptions.modules.SearchBar.enabled)
-        $("#SearchBar").attr("checked",true);
-      if (chatOptions.modules.MultiKick.enabled)
-        $("#MultiKick").attr("checked",true);
-      if (chatOptions.modules.IgnoreURL.enabled)
-        $("#IgnoreURL").attr("checked",true);
-      if (chatOptions.modules.StopSideScroll.enabled)
-        $("#StopSideScroll").attr("checked",true);
-      
       // enum through the available window fonts
       if (typeof window.customFonts !== "undefined" && window.customFonts.length) {
         for (var i = 0; i < window.customFonts.length; i++) {
@@ -335,11 +328,12 @@ if(wgCanonicalSpecialPageName == 'Chat') {
       
       // Set the cookies
       for (var m in chatOptions.modules) {
-        setCookie(m, chatOptions.modules[m].enabled);
+        if ( chatOptions.modules.hasProperty( m ) )
+          setCookie(m, chatOptions.modules[m].enabled);
       }
       
       for (var l in chatOptions.look) {
-        if(chatOptions.look[l]) {
+        if ( chatOptions.look.hasProperty( l ) ) {
           if(chatOptions.look[l].font) {
             setCookie(l + 'font', chatOptions.look[l].font);
           }
