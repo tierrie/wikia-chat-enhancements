@@ -212,7 +212,6 @@ if(wgCanonicalSpecialPageName == 'Chat') {
           var module = chatOptions.modules[m];
           if (typeof module.enabled === 'boolean' && module.enabled && !module.loaded) {
             module.load();  // load the modules
-            $(module.element).attr("checked",true);  // check the box to indicate to the user that it is loaded
           }
         }
       }
@@ -244,6 +243,15 @@ if(wgCanonicalSpecialPageName == 'Chat') {
           }
         ]
       });
+      
+      // check if various modules have been enabled by the user, and check their boxes if so
+      for (var m in chatOptions.modules) {
+        if ( chatOptions.modules.hasOwnProperty( m ) ) {
+          var module = chatOptions.modules[m];
+          $(module.element).attr("checked",true);  // check the box to indicate to the user that it is loaded
+        }
+      }
+      
       // enum through the available window fonts
       if (typeof window.customFonts !== "undefined" && window.customFonts.length) {
         for (var i = 0; i < window.customFonts.length; i++) {
