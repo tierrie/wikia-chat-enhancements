@@ -51,8 +51,7 @@ if(wgCanonicalSpecialPageName == 'Chat') {
         });
       });
       
-      // hook the add button to add an entry to the list
-      $(document).on('click', '#ignore_user_add a.icon.add', function () {
+      function ignoreUser(name) {
         if ( $('#ignore_user_add input[type=text]').val().length != 0 ) {
           mainRoom.blockPrivate({name: $('#ignore_user_add input[type=text]').val()});
           
@@ -61,6 +60,17 @@ if(wgCanonicalSpecialPageName == 'Chat') {
           $('#ignored_user_list').find('li:last').hide();
           $('#ignored_user_list').find('li:last').slideDown(200);
           $('#ignore_user_add input[type=text]').val('');
+        }
+      }
+      
+      // hook the add button to add an entry to the list
+      $(document).on('click', '#ignore_user_add a.icon.add', ignoreUser);
+      
+      // hook the enter button
+      $('#ignore_user_add input[type=text]').on('keypress', function(e) {
+        if (e.keyCode === 13) {
+          ignoreUser();
+          e.preventDefault();
         }
       });
     }
@@ -100,7 +110,7 @@ if(wgCanonicalSpecialPageName == 'Chat') {
     }*/
     
     // delegate the hook to #chat-ignore-list-button
-    $('body').on('click', '#chat-ignore-list-button', openIgnoreList);
+    $(document).on('click', '#chat-ignore-list-button', openIgnoreList);
     
     console.log("LOG: Chat/IgnoreUsers.js loaded");
   })(); // execute the anonymous function for scoping
