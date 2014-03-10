@@ -14,48 +14,13 @@
 #chat-options-button .chat-options { position: relative; bottom: 3px; padding-left: 5px; display: inline; }
 #chat-ignore-list-button { cursor: pointer; position: relative; top: -5px; font-size: 70%; }
 
-ul#ignored_user_list .icon, ul#ignore_user_add .icon {
-  background-color: transparent;
-  background-image: url(http://slot1.images.wikia.nocookie.net/__cb62523/common/skins/oasis/images/sprite.png);
-  background-repeat: no-repeat;
-  
-  width: 14px;
-  height: 14px;
-  float: right;
-  
-  cursor: pointer;
-}
-ul#ignored_user_list .icon.remove, ul#ignore_user_add .icon.remove {
-  margin: 0.3em 0 0 0;
-  background-position: -1177px -81px;
-}
-ul#ignored_user_list .icon.add, ul#ignore_user_add .icon.add {
-  margin: 0.7em 0 0 0;
-  background-position: -1097px -81px;
-}
-ul#ignored_user_list, ul#ignore_user_add {
-  list-style-type: none;
-  font-family: arial; 
-  font-size: 100%;
-}
+/* chat ignore + and - buttons */
+ul#ignored_user_list .icon, ul#ignore_user_add .icon { background-color: transparent; background-image: url(http://slot1.images.wikia.nocookie.net/__cb62523/common/skins/oasis/images/sprite.png); background-repeat: no-repeat; width: 14px; height: 14px; float: right; cursor: pointer; }
+ul#ignored_user_list .icon.remove, ul#ignore_user_add .icon.remove { margin: 0.3em 0 0 0; background-position: -1177px -81px; }
+ul#ignored_user_list .icon.add, ul#ignore_user_add .icon.add { margin: 0.7em 0 0 0; background-position: -1097px -81px; }
+ul#ignored_user_list, ul#ignore_user_add { list-style-type: none; font-family: arial;  font-size: 100%; }
 
-ul#ignored_user_list li, ul#ignore_user_add li {
-  line-height: 24px;
-  width: 150px;
-}
-ul#ignored_user_list li span {
-  padding-left: 0.5em;
-}
-ul#ignored_user_list li+li {
-}
-ul#ignore_user_add {
-  margin-top: 0.7em;
-}
-ul#ignore_user_add input[type=text] {
-  border: 1px solid rgb(254,195,86);
-  background: transparent;
-  font-size: 100%;
-  padding: 0.5em 0 0.5em 0.3em;
-  width: 120px;
-  height: 1.6em;
-}
+ul#ignored_user_list li, ul#ignore_user_add li { line-height: 24px; width: 150px; }
+ul#ignored_user_list li span { padding-left: 0.5em; }
+ul#ignore_user_add { margin-top: 0.7em; }
+ul#ignore_user_add input[type=text] { border: 1px solid rgb(254,195,86); background: transparent; font-size: 100%; padding: 0.5em 0 0.5em 0.3em; width: 120px; height: 1.6em; }

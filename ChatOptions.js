@@ -33,6 +33,9 @@
  *
  * @version 2.1.0
  * Changed colorPicker so the default values can be preset in a wiki's css
+ *
+ * @version 2.2.0
+ * Added support for Chat/IgnoreUser.js
  */
 
 
